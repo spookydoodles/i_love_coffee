@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu | I Love Café Carlisle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+
+  <!-- ===== NAVBAR (same on every page) ===== -->
+  <header class="navbar">
+    <nav class="navbar__links navbar__links--left" id="navLinksLeft" aria-label="Main">
+      <a class="navbar__link" href="index.html">Home</a>
+      <a class="navbar__link navbar__link--active" aria-current="page" href="menu.html">Menu</a>
+      <a class="navbar__link" href="index.html#find-us">Find us</a>
+    </nav>
+    <a class="navbar__logo" href="index.html" aria-label="I Love Café home">
+      <img class="navbar__logo-image" src="images/logo-pink.png" alt="I Love Café logo">
+    </a>
+    <nav class="navbar__links navbar__links--right">
+      <button class="navbar__basket-button" id="openBasket">Basket <span class="navbar__basket-count"
+          id="basketCount">0</span></button>
+    </nav>
+    <button class="navbar__burger" id="burgerButton" aria-label="Open menu" aria-expanded="false"
+      aria-controls="navLinksLeft">&#9776;</button>
+  </header>
+
+
+  <div class="page-heading">
+    <h1>Our menu</h1>
+    <p>Use &minus; and + to add to your basket. GFA = gluten free available, VGA = vegan available, V = vegetarian.</p>
+  </div>
+
+
+  <main class="menu-page">
+    <div class="menu-layout">
+
+
+      <!-- LEFT COLUMN -->
+      <div class="menu-column">
+        <section class="menu-block menu-block--blue">
+          <h3 class="menu-block__title">Breakfast</h3><br>
+          <span class="menu-block__time">Served 9am to 11:30am</span>
+          <div class="menu-items" data-category="breakfast"></div>
+        </section>
+        <section class="menu-block menu-block--yellow menu-block--boxed">
+          <h3 class="menu-block__title">Extras</h3>
+          <div class="menu-items" data-category="extras"></div>
+        </section>
+        <section class="menu-block menu-block--pink-light menu-block--boxed menu-block--cakes">
+          <h3 class="menu-block__title">Cakes</h3>
+          <div class="menu-items" data-category="cakes"></div>
+        </section>
+      </div>
+
+
+      <!-- MIDDLE COLUMN (brand panel + kids) -->
+      <div class="menu-column menu-column--brand">
+        <section class="menu-block menu-block--pink">
+          <img class="menu-brand__logo" src="images/logo-pink.png" alt="I Love Café Carlisle">
+          <p class="menu-brand__tagline">Love at first bite</p>
+          <svg class="menu-brand__heart" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <div class="menu-brand__socials"><a class="menu-brand__social" href="https://instagram.com/ilovecafecarlisle">
+              <svg class="menu-brand__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm4.6-3.4a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z" />
+              </svg>
+              instagram.com/ilovecafecarlisle
+            </a>
+            <a class="menu-brand__social" href="https://facebook.com/ilovecafecarlisle">
+              <svg class="menu-brand__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.6V4.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V14h2.7v8h3.2z" />
+              </svg>
+              facebook.com/ilovecafecarlisle
+            </a>
+          </div>
+        </section>
+        <section class="menu-block menu-block--yellow">
+          <h3 class="menu-block__title">Kids</h3><br>
+          <span class="menu-block__time">11:30am to 2:30pm</span>
+          <div class="menu-items" data-category="kids"></div>
+          <div class="menu-brand__allergy">Please inform our team of any allergies or dietary requirements</div>
+        </section>
+      </div>
+
+
+      <!-- RIGHT COLUMN -->
+      <div class="menu-column">
+        <section class="menu-block menu-block--yellow">
+          <h3 class="menu-block__title">Lunch</h3><br>
+          <span class="menu-block__time">Served 11:30am to 2:30pm</span>
+          <div class="menu-items" data-category="lunch"></div>
+        </section>
+        <section class="menu-block menu-block--green">
+          <h3 class="menu-block__title">Healthy bowls</h3>
+          <div class="menu-items" data-category="bowls"></div>
+        </section>
+      </div>
+    </div>
+
+
+    <!-- BOTTOM ROW: drinks and sides -->
+    <div class="menu-bottom">
+      <section class="menu-block menu-block--blue">
+        <h3 class="menu-block__title">Hot drinks</h3>
+        <div class="menu-items menu-items--two-col" data-category="hot"></div>
+      </section>
+      <section class="menu-block menu-block--blue">
+        <h3 class="menu-block__title">Cold drinks</h3>
+        <div class="menu-items" data-category="cold"></div>
+      </section>
+      <section class="menu-block menu-block--blue">
+        <h3 class="menu-block__title">Sides</h3>
+        <div class="menu-items" data-category="sides"></div>
+      </section>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <span>Thank you for supporting local <span class="footer__heart">&hearts;</span> We hope to see you again
+      soon!</span>
+    <img class="footer__logo" src="images/logo-pink.png" alt="I Love Café Carlisle">
+    <span class="footer__name">I Love Café<br>&mdash; Carlisle &mdash;</span>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

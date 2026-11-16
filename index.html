@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Love Café Carlisle | Dog-friendly café, breakfast, lunch &amp; cakes</title>
+  <meta name="description"
+    content="Independent, dog-friendly café in the heart of Carlisle. Breakfast, lunch, quality coffee and homemade cakes. Open Tuesday to Saturday, 9am to 4pm.">
+  <meta property="og:title" content="I Love Café Carlisle">
+  <meta property="og:description" content="Love at first bite. Independent, dog-friendly café in Carlisle.">
+  <meta name="theme-color" content="#e8457e">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"I Love Café Carlisle","telephone":"+441228272565","address":{"@type":"PostalAddress","streetAddress":"20-21 St Cuthbert's Lane","addressLocality":"Carlisle","postalCode":"CA3 8AG","addressCountry":"GB"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"16:00"}],"servesCuisine":"Café, breakfast, lunch","url":"https://instagram.com/ilovecafecarlisle"}
+</script>
+
+
+
+  <meta name="description"
+    content="Independent, dog-friendly café in the heart of Carlisle. Breakfast, lunch, quality coffee and homemade cakes. Open Tuesday to Saturday, 9am to 4pm.">
+  <meta property="og:title" content="I Love Café Carlisle">
+  <meta property="og:description" content="Love at first bite. Independent, dog-friendly café in Carlisle.">
+  <meta name="theme-color" content="#e8457e">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR (same on every page) ===== -->
+  <header class="navbar">
+    <nav class="navbar__links navbar__links--left" id="navLinksLeft" aria-label="Main">
+      <a class="navbar__link navbar__link--active" aria-current="page" href="index.html">Home</a>
+      <a class="navbar__link" href="menu.html">Menu</a>
+      <a class="navbar__link" href="index.html#find-us">Find us</a>
+    </nav>
+    <a class="navbar__logo" href="index.html" aria-label="I Love Café home">
+      <img class="navbar__logo-image" src="./images/logo-pink.png" alt="I Love Café logo">
+    </a>
+    <nav class="navbar__links navbar__links--right">
+      <button class="navbar__basket-button" id="openBasket">Basket <span class="navbar__basket-count"
+          id="basketCount">0</span></button>
+    </nav>
+    <button class="navbar__burger" id="burgerButton" aria-label="Open menu" aria-expanded="false"
+      aria-controls="navLinksLeft">&#9776;</button>
+  </header>
+
+  <!-- ===== HERO (replace images/hero.jpg with a big photo) ===== -->
+  <section class="hero" style="--photo: url('images/hero.jpg')">
+    <div class="hero__card">
+      <div class="hero__sticker">Dog ice cream <span>£2.50</span></div>
+      <h1 class="hero__title">Love at first bite</h1>
+      <p class="hero__text">An independent, dog-friendly café in the heart of Carlisle. Breakfast, lunch, quality coffee
+        and homemade cakes.</p>
+      <p class="hero__status" id="openStatus"></p>
+      <div class="hero__buttons">
+        <a class="button" href="menu.html">Order from the menu</a>
+        <a class="button button--yellow" href="#find-us">Find us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVING TIMES ===== -->
+  <section class="service-times">
+    <div class="service-tile service-tile--blue">
+      <h3 class="service-tile__title">Breakfast</h3>
+      <div class="service-tile__time">9am to 11:30am</div>
+    </div>
+    <div class="service-tile service-tile--yellow">
+      <h3 class="service-tile__title">Lunch</h3>
+      <div class="service-tile__time">11:30am to 2:30pm</div>
+    </div>
+    <div class="service-tile service-tile--pink">
+      <h3 class="service-tile__title">Cakes &amp; coffee</h3>
+      <div class="service-tile__time">All day</div>
+    </div>
+  </section>
+
+  <!-- ===== MENU HIGHLIGHTS (filled by js/main.js) ===== -->
+  <section class="section">
+    <h2 class="section__title">Our favourites</h2>
+    <p class="section__subtitle">A little taste of the menu. Add to your basket straight away.</p>
+    <div class="highlights" id="highlights"></div>
+    <div class="highlights__more"><a class="button button--yellow" href="menu.html">See the full menu</a></div>
+  </section>
+
+  <!-- ===== GALLERY PREVIEW ===== -->
+  <section class="section">
+    <h2 class="section__title">Good food, feel good</h2>
+    <div class="gallery-preview">
+      <div class="gallery-slider" role="img" aria-label="Photos of the café, its food and its dog-friendly seating">
+        <div class="gallery-slider__slide photo gallery-slider__slide--active"
+          style="--photo: url('images/i-love-cafe-is-an-independent.jpg')"></div>
+        <div class="gallery-slider__slide photo" style="--photo: url('images/our-gorgeous-cafe-located (1).jpg')"></div>
+        <div class="gallery-slider__slide photo" style="--photo: url('images/our-gorgeous-cafe-located (2).jpg')"></div>
+        <div class="gallery-slider__slide photo" style="--photo: url('images/our-gorgeous-cafe-located.jpg')"></div>
+      </div>
+      <div class="gallery-stack" aria-hidden="true">
+        <div class="polaroid">
+          <div class="polaroid__photo photo" style="--photo: url('images/our-gorgeous-cafe-located (1).jpg')"></div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid__photo photo" style="--photo: url('images/our-gorgeous-cafe-located (2).jpg')"></div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid__photo photo" style="--photo: url('images/our-gorgeous-cafe-located.jpg')"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-preview__more"><a class="button" href="https://www.instagram.com/ilovecafecarlisle">View
+        more</a></div>
+  </section>
+
+  <!-- ===== FIND US ===== -->
+  <section class="find-us" id="find-us">
+    <div>
+      <h2 class="find-us__title">Find us</h2>
+      <p>20-21 St Cuthbert's Lane<br>Carlisle, CA3 8AG</p>
+      <p><a href="tel:+441228272565">01228 272565</a></p>
+      <p><a href="https://instagram.com/ilovecafecarlisle">Instagram</a> &middot; <a
+          href="https://facebook.com/ilovecafecarlisle">Facebook</a></p>
+    </div>
+    <div>
+      <h2 class="find-us__title">Opening hours</h2>
+      <p>Tuesday to Saturday: 9:00 to 16:00<br>Sunday &amp; Monday: closed</p>
+      <p>Dogs welcome. Please tell our team about any allergies.</p>
+    </div>
+    <div class="find-us__map">
+      <iframe class="find-us__map-frame" title="Map to I Love Café" loading="lazy"
+        src="https://maps.google.com/maps?q=20-21+St+Cuthbert%27s+Lane+Carlisle+CA3+8AG&output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer class="footer">Thank you for supporting local &hearts; We hope to see you again soon!</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1834 @@
+/* =====================================================
+   I LOVE CAFE - STYLESHEET
+   1. Colours & basics   2. Navbar (awning)   3. Hero
+   4. Home sections      5. Menu page         6. Basket
+   7. Footer             8. Mobile
+   ===================================================== */
+
+
+/* ---------- 1. COLOURS & BASICS (taken from the printed menu) ---------- */
+:root {
+  --colour-blue: #a6d5f2;
+  --colour-pink: #e8457e;
+  --colour-pink-light: #f8a8c3;
+  --colour-yellow: #ffce4e;
+  --colour-green: #b7e2a0;
+  --colour-cream: #fffaf2;
+  --colour-ink: #222222;
+  --font-script: 'Sacramento', cursive;
+  /* h1 and h2, like "Love at first bite" */
+  --font-title: 'Anton', Impact, sans-serif;
+  /* bold block titles, like "BREAKFAST" */
+  --font-body: 'Poppins', Arial, sans-serif;
+  --stripe-width: 50px;
+  /* width of one awning stripe */
+  --navbar-height: 76px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--colour-ink);
+  background: var(--colour-cream);
+  line-height: 1.5;
+}
+
+
+h1,
+h2 {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--colour-pink);
+  line-height: 1;
+  margin: 0 0 .3em;
+}
+
+
+h3 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0 0 .3em;
+}
+
+
+h1 {
+  font-size: 5.5rem;
+}
+
+
+h2 {
+  font-size: 3.6rem;
+}
+
+
+a {
+  color: inherit;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 20px;
+}
+
+
+.section__title {
+  text-align: center;
+}
+
+
+.section__subtitle {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 34px;
+}
+
+
+.button {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--colour-pink);
+  color: #fff;
+  font: 600 .95rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 12px 28px;
+  border-radius: 30px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .2);
+}
+
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+
+.button--yellow {
+  background: var(--colour-yellow);
+  color: var(--colour-ink);
+}
+
+
+
+
+/* Photo placeholder: put your picture in style="--photo: url(...)". A coloured dotted tile shows if there is no picture. */
+.photo {
+  --tint: var(--colour-blue);
+  background-image: var(--photo, none), radial-gradient(rgba(255, 255, 255, .45) 4px, transparent 5px), linear-gradient(var(--tint), var(--tint));
+  background-size: cover, 28px 28px, cover;
+  background-position: center;
+}
+
+
+.photo:nth-child(4n+2) {
+  --tint: var(--colour-pink-light);
+}
+
+
+.photo:nth-child(4n+3) {
+  --tint: var(--colour-yellow);
+}
+
+
+.photo:nth-child(4n+4) {
+  --tint: var(--colour-green);
+}
+
+
+/* keyboard focus: dark ring + white halo so it shows on every colour */
+:focus-visible {
+  outline: 3px solid var(--colour-ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- 2. NAVBAR (striped awning with scalloped edge) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 0 28px;
+  background: repeating-linear-gradient(90deg, var(--colour-pink) 0 var(--stripe-width), #fff var(--stripe-width) calc(var(--stripe-width) * 2));
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, .2));
+}
+
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: calc(var(--stripe-width) / 2);
+  background-image: radial-gradient(circle at calc(var(--stripe-width) * .5) 0, var(--colour-pink) calc(var(--stripe-width) * .5 - .5px), transparent calc(var(--stripe-width) * .5)), radial-gradient(circle at calc(var(--stripe-width) * 1.5) 0, #fff calc(var(--stripe-width) * .5 - .5px), transparent calc(var(--stripe-width) * .5));
+  background-size: calc(var(--stripe-width) * 2) 100%;
+  background-repeat: repeat-x;
+}
+
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+
+.navbar__links--right {
+  justify-content: flex-end;
+}
+
+/*
+.navbar__links--left {
+  justify-content: flex-end;
+} */
+
+
+.navbar__link {
+  background: var(--colour-yellow);
+  color: var(--colour-ink);
+  text-decoration: none;
+  font: 600 .85rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 8px 18px;
+  border-radius: 30px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .25);
+}
+
+
+.navbar__link:hover,
+.navbar__link--active {
+  background: var(--colour-ink);
+  color: #fff;
+}
+
+
+.navbar__logo {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 170px;
+  height: var(--navbar-height);
+}
+
+
+.navbar__logo-image {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+  background: var(--colour-pink);
+}
+
+
+.navbar__basket-button {
+  background: var(--colour-ink);
+  color: #fff;
+  border: 0;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font: 600 .85rem var(--font-body);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+
+.navbar__basket-count {
+  background: var(--colour-yellow);
+  color: var(--colour-ink);
+  border-radius: 50%;
+  display: inline-block;
+  min-width: 22px;
+  margin-left: 6px;
+  text-align: center;
+}
+
+
+.navbar__burger {
+  display: none;
+  background: var(--colour-yellow);
+  border: 0;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+
+/* ---------- 3. HERO ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 150px 20px 80px;
+  text-align: center;
+  background-image: var(--photo, none), radial-gradient(rgba(255, 255, 255, .35) 9px, transparent 10px), linear-gradient(var(--colour-blue), var(--colour-blue));
+  background-size: cover, 56px 56px, cover;
+  background-position: center;
+}
+
+
+.hero__card {
+  position: relative;
+  background: var(--colour-cream);
+  border-radius: 50px;
+  padding: 40px 44px;
+  max-width: 580px;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, .6), 0 18px 40px rgba(0, 0, 0, .2);
+}
+
+
+.hero__text {
+  margin: 0 0 20px;
+}
+
+
+.hero__buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.hero__sticker {
+  position: absolute;
+  right: -50px;
+  top: -50px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--colour-yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(12deg);
+  font: 400 1.5rem/1 var(--font-title);
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+
+.polaroid:nth-child(2) .polaroid__photo {
+  --tint: var(--colour-pink-light);
+}
+
+
+.polaroid:nth-child(3) .polaroid__photo {
+  --tint: var(--colour-yellow);
+}
+
+
+.hero__status {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 14px;
+  border-radius: 30px;
+  background: #fff;
+  font: 600 .8rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.hero__status:empty {
+  display: none;
+}
+
+.hero__status::before {
+  content: '';
+  display: inline-block;
+  width: .6em;
+  height: .6em;
+  margin-right: .5em;
+  border-radius: 50%;
+  background: var(--status-colour, #888);
+}
+
+.hero__status--open {
+  --status-colour: #2e9b3f;
+}
+
+.hero__status--closed {
+  --status-colour: var(--colour-pink);
+}
+
+/* ---------- 4. HOME SECTIONS ---------- */
+.service-times {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 1100px;
+  margin: -30px auto 0;
+  padding: 0 20px;
+  position: relative;
+}
+
+
+.service-tile {
+  border-radius: 22px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .12);
+}
+
+
+.service-tile__title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+
+.service-tile__time {
+  font-weight: 600;
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+
+
+.service-tile--blue {
+  background: var(--colour-blue);
+}
+
+
+.service-tile--yellow {
+  background: var(--colour-yellow);
+}
+
+
+.service-tile--pink {
+  background: var(--colour-pink-light);
+}
+
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+
+.highlight-card {
+  border-radius: 26px;
+  padding: 26px 20px;
+  text-align: center;
+}
+
+
+.highlight-card--blue {
+  background: var(--colour-blue);
+}
+
+
+.highlight-card--yellow {
+  background: var(--colour-yellow);
+}
+
+
+.highlight-card--green {
+  background: var(--colour-green);
+}
+
+
+.highlight-card--pink {
+  background: var(--colour-pink-light);
+}
+
+
+.highlight-card__emoji {
+  width: 76px;
+  height: 76px;
+  line-height: 76px;
+  margin: 0 auto 10px;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 2.4rem;
+}
+
+
+.highlight-card__title {
+  font-size: 1.6rem;
+}
+
+
+.highlight-card__description {
+  font-size: .85rem;
+  min-height: 3.4em;
+}
+
+
+.highlight-card__price {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+
+.highlight-card .button {
+  margin-top: 12px;
+}
+
+
+.highlights__more {
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+.gallery-preview {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+
+.gallery-slider {
+  position: relative;
+  aspect-ratio: 4 / 3.2;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+}
+
+
+.gallery-slider__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+.gallery-slider__slide--active {
+  opacity: 1;
+}
+
+
+.gallery-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+
+.polaroid {
+  background: #fff;
+  padding: 8px 8px 26px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+  width: 66%;
+  margin: 0 auto;
+  transition: transform .2s;
+}
+
+
+.polaroid__photo {
+  aspect-ratio: 4 / 3;
+}
+
+
+.polaroid:nth-child(1) {
+  transform: rotate(4deg);
+}
+
+
+.polaroid:nth-child(2) {
+  transform: rotate(6deg);
+}
+
+
+.polaroid:nth-child(3) {
+  transform: rotate(3deg);
+}
+
+
+.polaroid:hover {
+  transform: rotate(0) scale(1.04);
+}
+
+
+.gallery-preview__more {
+  text-align: center;
+  margin-top: 34px;
+}
+
+
+.find-us {
+  max-width: 1060px;
+  margin: 0 auto 70px;
+  padding: 44px 34px;
+  border-radius: 40px;
+  background: var(--colour-pink);
+  scroll-margin-top: 140px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+}
+
+
+.find-us__title {
+  color: #fff;
+  font-size: 3rem;
+}
+
+
+.find-us__map {
+  min-height: 200px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--colour-blue);
+}
+
+
+.find-us__map-frame {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+
+/* ---------- 5. MENU PAGE (coloured panels like the printed menu) ---------- */
+.page-heading {
+  text-align: center;
+  padding: 120px 20px 10px;
+}
+
+
+.menu-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.menu-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  align-items: stretch;
+  /* the three columns always end at exactly the same height, like the printed menu */
+}
+
+
+.menu-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* the last panel of the outer columns stretches to fill, so all three columns finish level */
+.menu-column:not(.menu-column--brand)>.menu-block:last-child {
+  flex: 1 0 auto;
+}
+
+
+/* middle column, like the printed menu: the pink brand panel takes about
+   two thirds of the stretch, the kids panel the rest, and both fill nicely */
+.menu-column--brand .menu-block--pink {
+  flex: 5 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+
+.menu-column--brand .menu-block--yellow {
+  flex: 2 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* kids items spread evenly down the panel and the allergy note sits at the bottom */
+.menu-column--brand .menu-block--yellow .menu-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 6px 0;
+}
+
+
+.menu-column--brand .menu-block--yellow .menu-item {
+  padding: 2px 0;
+}
+
+
+
+
+.menu-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+  align-items: stretch;
+  /* the three bottom panels also finish level */
+}
+
+
+/* cold drinks and sides have few items, so they spread out evenly
+   instead of leaving an empty gap at the bottom of the panel */
+.menu-bottom .menu-block {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.menu-bottom .menu-items:not(.menu-items--two-col) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+
+.menu-block {
+  border-radius: 22px;
+  padding: 22px 24px;
+}
+
+
+.menu-block--blue {
+  background: var(--colour-blue);
+}
+
+
+.menu-block--yellow {
+  background: var(--colour-yellow);
+}
+
+
+.menu-block--green {
+  background: var(--colour-green);
+}
+
+
+.menu-block--pink-light {
+  background: var(--colour-pink-light);
+}
+
+
+.menu-block--pink {
+  background: var(--colour-pink);
+  color: #fff;
+  text-align: center;
+}
+
+
+.menu-block--cakes {
+  position: relative;
+  /* room for the dog ice cream sticker in the bottom corner */
+  padding-bottom: 205px;
+}
+
+
+/* section titles get hand-drawn flourishes beside them, like the printed menu */
+.menu-block__title::before,
+.menu-block__title::after {
+  content: '';
+  display: none;
+  width: .36em;
+  height: .36em;
+  margin: 0 .22em;
+  vertical-align: .16em;
+  background-color: var(--accent-colour, var(--colour-pink));
+  -webkit-mask: var(--accent-image) center / contain no-repeat;
+  mask: var(--accent-image) center / contain no-repeat;
+}
+
+
+/* breakfast: outline hearts flanking the title, like the printed menu */
+.menu-block:has([data-category="breakfast"]) .menu-block__title::before,
+.menu-block:has([data-category="breakfast"]) .menu-block__title::after {
+  display: inline-block;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20l-1.4-1.3C5.6 14.5 2.5 11.6 2.5 8.6 2.5 6 4.5 4 7.1 4c1.6 0 3.1.8 4.9 2.6C13.8 4.8 15.3 4 16.9 4c2.6 0 4.6 2 4.6 4.6 0 3-3.1 5.9-8.1 10.1L12 20z' fill='none' stroke='black' stroke-width='2'/></svg>");
+}
+
+
+/* lunch, kids and sides: radiating sunburst lines */
+.menu-block:has([data-category="lunch"]) .menu-block__title::before,
+.menu-block:has([data-category="kids"]) .menu-block__title::before,
+.menu-block:has([data-category="sides"]) .menu-block__title::before {
+  display: inline-block;
+  width: .52em;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 24'><path d='M26 4 7 8M26 12 5 12M26 20 7 16' stroke='black' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+}
+
+
+.menu-block:has([data-category="lunch"]) .menu-block__title::after,
+.menu-block:has([data-category="kids"]) .menu-block__title::after,
+.menu-block:has([data-category="sides"]) .menu-block__title::after {
+  display: inline-block;
+  width: .52em;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 24'><path d='M2 4 21 8M2 12 23 12M2 20 21 16' stroke='black' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+}
+
+
+/* healthy bowls: little leaves */
+.menu-block:has([data-category="bowls"]) .menu-block__title::before,
+.menu-block:has([data-category="bowls"]) .menu-block__title::after {
+  display: inline-block;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 20C4 10 12 4 21 4c-1 9-8 16-17 16z'/></svg>");
+}
+
+
+/* hot drinks: steaming mug; cold drinks: cup with a straw */
+.menu-block:has([data-category="hot"]) .menu-block__title::before {
+  display: inline-block;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8zm13 1h2a3 3 0 0 1 0 6h-2V9zM7 2c-.6 1.4-.6 2.6 0 4M11 2c-.6 1.4-.6 2.6 0 4M15 2c-.6 1.4-.6 2.6 0 4' stroke='black' stroke-width='2' fill='none'/></svg>");
+}
+
+
+.menu-block:has([data-category="cold"]) .menu-block__title::before {
+  display: inline-block;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 5h12l-1.5 16h-9L6 5zm1 5h10M13 5l3.5-3' stroke='black' stroke-width='2' fill='none'/></svg>");
+}
+
+
+/* cakes: slice of cake doodle after the title */
+.menu-block:has([data-category="cakes"]) .menu-block__title::after {
+  display: inline-block;
+  --accent-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3 3 10h18L12 3zM4 12h16v8H4v-8z'/></svg>");
+}
+
+
+.menu-block__title {
+  font-size: 2.8rem;
+  line-height: 1;
+  text-align: center;
+}
+
+
+/* serving-time banners sit centered under the title, like the printed menu */
+.menu-block__title+br {
+  display: none;
+}
+
+
+.menu-block__time {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 12px;
+  background: var(--colour-pink);
+  color: #fff;
+  font: 600 .8rem var(--font-body);
+  text-transform: uppercase;
+  padding: 3px 18px;
+}
+
+
+.menu-block__time--foot {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+
+.menu-block__note {
+  font-size: .8rem;
+  margin: 0 0 8px;
+}
+
+
+.menu-block__script {
+  /* script tagline at the bottom of a panel, like "Good food, feel good" */
+  font: 400 2.1rem/1.1 var(--font-script);
+  text-align: center;
+  margin-top: 14px;
+}
+
+
+/* pink heart at the end of the script tagline, like the printed menu */
+.menu-block__script::after {
+  content: '';
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  margin-left: 8px;
+  vertical-align: -1px;
+  background-color: var(--colour-pink);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") center / contain no-repeat;
+}
+
+
+.menu-group-title {
+  color: var(--colour-pink);
+  font: 700 .85rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin: 16px 0 2px;
+}
+
+
+.menu-brand__logo {
+  width: 92%;
+  border-radius: 50%;
+}
+
+
+.menu-brand__tagline {
+  font: 400 3rem/1 var(--font-script);
+  margin: 10px 0;
+}
+
+
+/* social links with round white badges, like the printed menu */
+.menu-brand__social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, .18);
+  border-radius: 30px;
+  padding: 7px 14px 7px 8px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: .85rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.menu-brand__icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 7px;
+  fill: var(--colour-pink);
+}
+
+
+/* little white heart between the tagline and the social links */
+.menu-brand__heart {
+  width: 34px;
+  height: 34px;
+  fill: #fff;
+}
+
+
+.menu-brand__allergy {
+  background: #fff;
+  color: var(--colour-pink);
+  border: 2px solid var(--colour-pink);
+  border-radius: 12px;
+  font: 600 .8rem var(--font-body);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+  margin-top: 12px;
+}
+
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: start;
+  gap: 0 10px;
+  padding: 7px 0;
+}
+
+
+/* item names: heavy all-caps with a little vector heart bullet, like the printed menu */
+.menu-item__name {
+  font-weight: 700;
+  font-size: .95rem;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+
+/* hearts are drawn as vector shapes (a text glyph can render as a broken caret) */
+.menu-item__name::before {
+  content: '';
+  display: inline-block;
+  width: .68em;
+  height: .68em;
+  margin-right: 7px;
+  vertical-align: 4%;
+  background-color: var(--bullet-colour, var(--colour-pink));
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") center / contain no-repeat;
+}
+
+
+/* lunch / extras / sides = dark hearts */
+.menu-items[data-category="lunch"] .menu-item__name,
+.menu-items[data-category="extras"] .menu-item__name,
+.menu-items[data-category="sides"] .menu-item__name {
+  --bullet-colour: var(--colour-ink);
+}
+
+
+/* healthy bowls = pink and green hearts */
+.menu-items[data-category="bowls"] .menu-item:nth-child(even) .menu-item__name {
+  --bullet-colour: #6f9c2b;
+}
+
+
+/* kids = pink stars */
+.menu-items[data-category="kids"] .menu-item__name {
+  --bullet-colour: var(--colour-pink);
+}
+
+
+.menu-items[data-category="kids"] .menu-item__name::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/></svg>");
+}
+
+
+/* drinks = plain lists, no bullets */
+.menu-items[data-category="hot"] .menu-item__name::before,
+.menu-items[data-category="cold"] .menu-item__name::before {
+  display: none;
+}
+
+
+.menu-item__tags {
+  font-weight: 400;
+  font-size: .8rem;
+}
+
+
+.menu-item__description {
+  grid-column: 1;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+
+.menu-item__price {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  font-weight: 700;
+  font-size: .95rem;
+  white-space: nowrap;
+}
+
+
+/* ---------- quantity stepper: [ - ] 0 [ + ] ---------- */
+.menu-item__stepper {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .15);
+}
+
+
+.menu-item__step {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--colour-pink);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+.menu-item__step:hover {
+  background: var(--colour-ink);
+}
+
+
+.menu-item__count {
+  min-width: 20px;
+  text-align: center;
+  font: 600 .8rem var(--font-body);
+}
+
+
+/* add-on line inside an item, like "Add black pudding £1.50" */
+.menu-addon {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 4px;
+  padding-left: 16px;
+  font-size: .85rem;
+}
+
+
+.menu-addon__name {
+  font-weight: 700;
+  color: var(--colour-pink);
+  text-transform: uppercase;
+}
+
+
+.menu-addon__price {
+  font-weight: 600;
+}
+
+
+.menu-addon .menu-item__stepper {
+  grid-row: auto;
+  grid-column: auto;
+  margin-left: auto;
+}
+
+
+/* "Dog ice cream £2.50" yellow circle sticker on the cakes panel */
+.menu-sticker {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 170px;
+  aspect-ratio: 1;
+  padding: 10px;
+  background: var(--colour-yellow);
+  border: 6px double var(--colour-ink);
+  border-radius: 50%;
+  transform: rotate(-8deg);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3px;
+}
+
+
+.menu-sticker__name {
+  font: 400 1.05rem/1.1 var(--font-title);
+  text-transform: uppercase;
+}
+
+
+.menu-sticker__price {
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+
+/* little outline heart doodle in the bottom corner of the cakes panel */
+.menu-block--cakes::after {
+  content: '';
+  position: absolute;
+  left: 26px;
+  bottom: 34px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--colour-pink);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20l-1.4-1.3C5.6 14.5 2.5 11.6 2.5 8.6 2.5 6 4.5 4 7.1 4c1.6 0 3.1.8 4.9 2.6C13.8 4.8 15.3 4 16.9 4c2.6 0 4.6 2 4.6 4.6 0 3-3.1 5.9-8.1 10.1L12 20z' fill='none' stroke='black' stroke-width='2'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20l-1.4-1.3C5.6 14.5 2.5 11.6 2.5 8.6 2.5 6 4.5 4 7.1 4c1.6 0 3.1.8 4.9 2.6C13.8 4.8 15.3 4 16.9 4c2.6 0 4.6 2 4.6 4.6 0 3-3.1 5.9-8.1 10.1L12 20z' fill='none' stroke='black' stroke-width='2'/></svg>") center / contain no-repeat;
+}
+
+
+/* two price columns inside the hot drinks panel, like the printed menu */
+.menu-items--two-col {
+  columns: 2;
+  column-gap: 24px;
+}
+
+
+.menu-items--two-col .menu-item,
+.menu-items--two-col .menu-addon {
+  break-inside: avoid;
+}
+
+
+/* the drinks columns are narrow, so the stepper sits under the price
+   and names + prices still line up like the printed menu */
+.menu-items--two-col .menu-item {
+  grid-template-columns: 1fr auto;
+}
+
+
+.menu-items--two-col .menu-item__price {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+
+.menu-items--two-col .menu-item__stepper {
+  grid-row: 2;
+  grid-column: 2;
+  justify-self: end;
+  margin-top: 3px;
+}
+
+
+.menu-items--two-col .menu-item__description {
+  grid-column: 1 / -1;
+}
+
+
+/* item without a price on the printed menu (kids sandwich) */
+.menu-item--no-price .menu-item__name {
+  font-weight: 600;
+}
+
+
+
+
+
+/* ---------- 6. BASKET (slide-in drawer, built by main.js) ---------- */
+.basket {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 360px;
+  max-width: 100%;
+  padding: 22px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(105%);
+  transition: transform .3s;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, .2);
+}
+
+
+.basket--open {
+  transform: none;
+}
+
+
+.basket__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.basket__title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+
+.basket__close {
+  background: none;
+  border: 0;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+
+.basket__items {
+  flex: 1;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+
+
+.basket__empty {
+  text-align: center;
+  opacity: .7;
+  padding: 30px 0;
+}
+
+
+.basket-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--colour-pink-light);
+  font-size: .9rem;
+}
+
+
+.basket-line__name {
+  flex: 1;
+  font-weight: 600;
+}
+
+
+.basket-line__price {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+
+.basket-line__button {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--colour-blue);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+.basket-line__button--remove {
+  background: var(--colour-pink);
+  color: #fff;
+}
+
+
+.basket__total {
+  display: flex;
+  justify-content: space-between;
+  font: 400 1.6rem var(--font-title);
+  margin-bottom: 12px;
+}
+
+
+.checkout-form {
+  display: none;
+  margin-top: 12px;
+}
+
+
+.checkout-form--open {
+  display: block;
+}
+
+
+.checkout-form__input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border: 2px solid var(--colour-blue);
+  border-radius: 14px;
+  font: inherit;
+}
+
+
+.checkout-form__demo {
+  margin: 8px 0 0;
+  font-size: .8rem;
+  text-align: center;
+}
+
+
+.basket-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, .45);
+}
+
+
+.basket-overlay--open {
+  display: block;
+}
+
+
+.message-toast {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 120;
+  background: var(--colour-green);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+
+.message-toast--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* ---------- 7. FOOTER ---------- */
+.footer {
+  background: var(--colour-pink);
+  color: #fff;
+  text-align: center;
+  padding: 22px 20px;
+  font: 600 .85rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+
+.footer__logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: #fff;
+}
+
+
+.footer__name {
+  text-align: left;
+  line-height: 1.35;
+}
+
+
+/* ---------- 8. MOBILE (logo moves to the top-left corner) ---------- */
+@media (max-width: 900px) {
+  :root {
+    --stripe-width: 34px;
+  }
+
+
+  h1 {
+    font-size: 3.8rem;
+  }
+
+
+  h2 {
+    font-size: 3rem;
+  }
+
+
+  .navbar {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+
+  .navbar__logo {
+    order: -1;
+    flex: 0 0 64px;
+  }
+
+
+  .navbar__logo-image {
+    width: 74px;
+    height: 74px;
+    left: 0;
+    transform: none;
+    border-width: 4px;
+  }
+
+
+  .navbar__links--left {
+    display: none;
+  }
+
+
+  .navbar__links--left.navbar__links--open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: calc(100% + var(--stripe-width) / 2);
+    left: 10px;
+    right: 10px;
+    padding: 14px;
+    border-radius: 20px;
+    background: var(--colour-cream);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    text-align: center;
+  }
+
+
+  .navbar__links--right {
+    flex: 1;
+  }
+
+
+  .navbar__links--right .navbar__link {
+    display: none;
+  }
+
+
+  .navbar__burger {
+    display: block;
+  }
+
+
+  .hero {
+    padding-top: 110px;
+    min-height: 70vh;
+  }
+
+
+  .hero__card {
+    padding: 30px 22px;
+  }
+
+
+  .hero__sticker {
+    right: -14px;
+    top: -60px;
+    width: 90px;
+    height: 90px;
+    font-size: 1.2rem;
+  }
+
+
+  .service-times,
+  .gallery-preview,
+  .menu-layout,
+  .menu-bottom {
+    grid-template-columns: 1fr;
+  }
+
+
+  .menu-items--two-col {
+    columns: 1;
+  }
+
+
+  .menu-block--cakes {
+    padding-bottom: 22px;
+  }
+
+
+  .menu-sticker {
+    position: static;
+    margin: 16px auto 0;
+    transform: rotate(-4deg);
+  }
+
+
+  .gallery-stack {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+  .polaroid {
+    width: 32%;
+  }
+
+
+  .menu-column--brand {
+    order: -1;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* bigger tap targets on phones and touch screens */
+@media (max-width: 900px),
+(pointer: coarse) {
+  .menu-item__step {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .menu-item__count {
+    min-width: 26px;
+    font-size: .95rem;
+  }
+
+  .basket-line__button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar__basket-button,
+  .navbar__burger {
+    min-height: 44px;
+  }
+}
+
+
+/* =====================================================
+   MENU PAGE: laid out like the printed menu
+   flush colour blocks, dashed boxes, ribbons, level rows
+   ===================================================== */
+.page-heading {
+  padding-bottom: 24px;
+}
+
+.page-heading p {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: .9rem;
+}
+
+.menu-page {
+  max-width: 1280px;
+  padding: 0 0 48px;
+}
+
+.menu-layout,
+.menu-column {
+  gap: 0;
+}
+
+.menu-block {
+  border-radius: 0;
+  padding: 26px 30px;
+}
+
+/* dashed rounded boxes (Extras, Cakes) and the inset green bowls panel */
+.menu-block--boxed,
+.menu-block--green {
+  position: relative;
+  isolation: isolate;
+  padding: 32px 34px;
+}
+
+.menu-block--boxed::before,
+.menu-block--green::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  z-index: -1;
+  border: 2px dashed rgba(34, 34, 34, .6);
+  border-radius: 26px;
+  pointer-events: none;
+}
+
+.menu-block--green {
+  background: var(--colour-yellow);
+}
+
+.menu-block--green::before {
+  background: var(--colour-green);
+}
+
+.menu-block--green .menu-block__script {
+  color: #5f9a2a;
+}
+
+.menu-block--green .menu-block__script::after {
+  background-color: #5f9a2a;
+}
+
+/* swallow-tail ribbon for serving times */
+.menu-block__time {
+  padding: 5px 30px;
+  font-size: .85rem;
+  letter-spacing: .04em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%);
+}
+
+.menu-block__time--foot {
+  clip-path: none;
+  background: none;
+  color: var(--colour-pink);
+  border: 2px solid var(--colour-pink);
+  border-radius: 10px;
+  padding: 4px 18px;
+}
+
+/* pink brand panel: one dashed box holding both social links */
+.menu-brand__socials {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px dashed rgba(255, 255, 255, .75);
+  border-radius: 16px;
+}
+
+.menu-brand__social {
+  background: none;
+  margin-top: 0;
+  padding: 5px 2px;
+  gap: 8px;
+  font-size: .72rem;
+  overflow-wrap: anywhere;
+}
+
+.menu-brand__socials .menu-brand__social:first-child .menu-brand__icon {
+  background: linear-gradient(45deg, #f9a03c, #e1306c 55%, #833ab4);
+  fill: #fff;
+}
+
+.menu-brand__socials .menu-brand__social:last-child .menu-brand__icon {
+  background: #1877f2;
+  fill: #fff;
+}
+
+/* bottom band: drinks and sides on one blue strip with thin dividers */
+.menu-bottom {
+  gap: 0;
+  margin-top: 0;
+  background: var(--colour-blue);
+}
+
+.menu-bottom .menu-block {
+  background: none;
+}
+
+.menu-bottom .menu-block+.menu-block {
+  background: linear-gradient(var(--colour-ink), var(--colour-ink)) left center / 2px 78% no-repeat;
+}
+
+.menu-items--two-col {
+  column-gap: 28px;
+}
+
+.footer__heart {
+  color: var(--colour-yellow);
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+/* ordering stays, but the steppers stay quiet until an item is added */
+.menu-item__stepper[data-qty="0"] {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.menu-item__stepper[data-qty="0"] .menu-item__step[data-step="-1"],
+.menu-item__stepper[data-qty="0"] .menu-item__count {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu-item__step {
+    width: 22px;
+    height: 22px;
+    font-size: .9rem;
+  }
+}
+
+@media (min-width: 901px) {
+
+  /* columns share rows, so every panel edge lines up like the print */
+  .menu-layout {
+    grid-template-columns: 35fr 27fr 38fr;
+    grid-template-areas: "breakfast brand lunch" "extras kids lunch" "cakes kids bowls";
+  }
+
+  .menu-column {
+    display: contents;
+  }
+
+  .menu-block:has([data-category="breakfast"]) {
+    grid-area: breakfast;
+  }
+
+  .menu-block--pink {
+    grid-area: brand;
+  }
+
+  .menu-block:has([data-category="lunch"]) {
+    grid-area: lunch;
+  }
+
+  .menu-block:has([data-category="extras"]) {
+    grid-area: extras;
+  }
+
+  .menu-block:has([data-category="kids"]) {
+    grid-area: kids;
+  }
+
+  .menu-block:has([data-category="cakes"]) {
+    grid-area: cakes;
+  }
+
+  .menu-block:has([data-category="bowls"]) {
+    grid-area: bowls;
+  }
+
+  .menu-bottom {
+    grid-template-columns: 2fr 1fr 1.1fr;
+  }
+
+  .menu-block--cakes {
+    padding: 36px 190px 36px 40px;
+    min-height: 210px;
+  }
+
+  .menu-block--cakes .menu-block__title {
+    text-align: left;
+  }
+}
+
+
+/* navbar buttons line up with the page content edges */
+:root {
+  --page-width: 1100px;
+  --page-gutter: 20px;
+}
+
+.navbar {
+  padding-inline: max(20px, calc((100% - var(--page-width)) / 2 + var(--page-gutter)));
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding-inline: 20px;
+  }
+}
+
+/* one width and one side padding for every page */
+.section,
+.service-times {
+  max-width: var(--page-width);
+  padding-inline: var(--page-gutter);
+}
+
+.menu-page {
+  max-width: var(--page-width);
+  padding: 0 var(--page-gutter) 48px;
+}
+
+.find-us {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: calc(var(--page-width) - 2 * var(--page-gutter));
+}
